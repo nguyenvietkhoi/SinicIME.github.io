@@ -1954,7 +1954,7 @@ function TAIDON(text, ch) {
 function TAIDENG(text, ch) {
     var tch = "";
     switch (ch) {
-        case '0': tch = "ꪰ"; break;
+        case '0': tch = "ꪷ"; break;
         case '1': tch = "꪿"; break;
         case '2': tch = "꫁"; break;
         case '3': tch = "ꪶ"; break;
@@ -1986,7 +1986,7 @@ function TAIDENG(text, ch) {
         case 't': tch = "ꪔ"; break;
         case 'u': tch = "ꪴ"; break;
         case 'v': tch = "ꪫ‍"; break;
-        case 'w': tch = "ꪷ"; break;
+        case 'w': tch = "ꪰ"; break;
         case 'x': tch = "ꪄ‍"; break;
         case 'y': tch = "ꪥ"; break;
         case 'z': tch = "ꪖ"; break;
@@ -2006,7 +2006,7 @@ function TAIDENG(text, ch) {
     switch (roma) {
         case 'ꪀn': roma = "ꪀ‍ꪙ"; break;
         case 'ꪀv': roma = "ꪀ‍ꪫ‍"; break;
-        case 'ꪰ0': roma = "꫊"; break;
+        case 'ꪷ0': roma = "꫊"; break;
         case 'ꪶ3': roma = "ꪶ‍"; break;
         case '\'h': roma = "ꪬ"; break;
         case '\'k': roma = "ꪁ‍"; break;
@@ -2043,9 +2043,8 @@ function TAIDENG(text, ch) {
         case 'ꪬv': roma = "ꪪ‍"; break;
         case '\'v': roma = "ꪫ‍"; break;
         case '\'o': roma = "ꪯ‍"; break;
-        case 'ꪮ‍o': roma = "ꪮ"; break;
-        case 'ꪰn': roma = "ꪽ"; break;
-        case 'ꪰm': roma = "ꪾ"; break;
+        case 'ꪷn': roma = "ꪽ"; break;
+        case 'ꪷm': roma = "ꪾ"; break;
         case '꪿h': roma = "ꫀ"; break;
         case '꫁h': roma = "ꫂ"; break;
         default: roma = t + tch; break;
@@ -5090,7 +5089,7 @@ function loadkeyboard() {
                 break;
             case 27:
                 $('#K192').html("<br>`");
-                $('#K48').html("<span style='color: #b59bff;'>꫊</span><br><span style='color: #6551d9;'>ꪰ</span>");
+                $('#K48').html("<span style='color: #b59bff;'>꫊</span><br><span style='color: #6551d9;'>ꪷ</span>");
                 $('#K49').html("<br><span style='color: #13abbb;'>ꫀ  </span><span style='color: #d48600;'>◌꪿</span>");
                 $('#K50').html("<br><span style='color: #13abbb;'>ꫂ  </span><span style='color: #d48600;'>◌꫁</span>");
                 $('#K51').html("<span style='color: #b1bb13;'>ꪶ‍ </span><br><span style='color: #7ba064;'>ꪶ</span>");
@@ -5101,14 +5100,14 @@ function loadkeyboard() {
                 $('#K56').html("<span style='color: #b1bb13;'>◌ꪸꪸ</span><br><span style='color: #7ba064;'>◌ꪸ</span>");
                 $('#K57').html("<span style='color: #b1bb13;'>◌ꪳꪳ</span><br><span style='color: #7ba064;'>◌ꪳ</span>");
                 $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪅ");
-                $('#K87').html("<br><span style='color: #ffc000;'>ꪷ</span>");
+                $('#K87').html("<br><span style='color: #ffc000;'>ꪰ</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
                 $('#K84').html("<span style='color: #d22e9f;'>ꪕ   </span><br>ꪔ");
                 $('#K89').html("<span style='color: #13abbb;'>ꪤ‍   </span><br>ꪥ");
                 $('#K85').html("<span style='color: #b1bb13;'>◌ꪴꪴ</span><br><span style='color: #7ba064;'>◌ꪴ</span>");
                 $('#K73').html("<span style='color: #b1bb13;'>◌ꪲꪲ</span><br><span style='color: #7ba064;'>◌ꪲ</span>");
-                $('#K79').html("<span style='color: #d22e9f;'>ꪯ‍  </span><span style='color: #b1bb13;'>ꪮ</span><br><span style='color: #7ba064;'>ꪮ‍</span>");
+                $('#K79').html("<span style='color: #d22e9f;'>ꪯ‍  </span><span style='color: #b1bb13;'>ꪮ</span><br>ꪮ‍");
                 $('#K80').html("<span style='color: #d22e9f;'>ꪝ‍   </span><br><span style='color: #13abbb;'>ꪟ   </span>ꪜ");
                 $('#K219').html("<br>[");
                 $('#K221').html("<br>]");
