@@ -5051,7 +5051,7 @@ function loadkeyboard() {
                 $('#K55').html("<br>ꪼ");
                 $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
                 $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪇ");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪇ");
                 $('#K87').html("<br><span style='color: #ffc000;'>ꪷ</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
