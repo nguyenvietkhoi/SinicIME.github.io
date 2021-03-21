@@ -2028,7 +2028,7 @@ function TAIDENG(text, ch) {
         case 'ꪬn': roma = "ꪘ"; break;
         case '\'n': roma = "ꪙ"; break;
         case '\'b': roma = "ꪛ"; break;
-        case '\'p': roma = "ꪝ‍"; break;
+        case '\'p': roma = "ꪝ"; break;
         case 'ꪌh': roma = "ꪞ"; break;
         case 'ꪜh': roma = "ꪟ"; break;
         case '\'f': roma = "ꪡ"; break;
@@ -5108,7 +5108,7 @@ function loadkeyboard() {
                 $('#K85').html("<span style='color: #b1bb13;'>◌ꪴꪴ</span><br><span style='color: #7ba064;'>◌ꪴ</span>");
                 $('#K73').html("<span style='color: #b1bb13;'>◌ꪲꪲ</span><br><span style='color: #7ba064;'>◌ꪲ</span>");
                 $('#K79').html("<span style='color: #d22e9f;'>ꪯ‍  </span><span style='color: #b1bb13;'>ꪮ</span><br>ꪮ‍");
-                $('#K80').html("<span style='color: #d22e9f;'>ꪝ‍   </span><br><span style='color: #13abbb;'>ꪟ   </span>ꪜ");
+                $('#K80').html("<span style='color: #d22e9f;'>ꪝ   </span><br><span style='color: #13abbb;'>ꪟ   </span>ꪜ");
                 $('#K219').html("<br>[");
                 $('#K221').html("<br>]");
                 $('#K65').html("<br>ꪱ");
