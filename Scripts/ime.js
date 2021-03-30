@@ -2363,11 +2363,13 @@ function LAIPAO(text, ch) {
         case '𖲑1': roma = "𖲝"; break;
         case '𖲒2': roma = "𖲞"; break;
         case '𖲃3': roma = "𖲋"; break;
+        case '𖲆4': roma = "𖲍"; break;
         case '𖲄5': roma = "𖲌"; break;
-        case '𖲈6': roma = "𖲍"; break;
+        case '𖲈6': roma = "𖲖"; break;
         case '𖲐7': roma = "𖲔"; break;
         case '𖲂8': roma = "𖲊"; break;
         case '𖲉9': roma = "𖲕"; break;
+        case '𖲀0': roma = "𖲜"; break;
         case '𖲅e': roma = "𖲇"; break;
         case '\'r': roma = "𖱷"; break;
         case '\'l': roma = "𖱹"; break;
@@ -5378,13 +5380,13 @@ function loadkeyboard() {
                 break;
             case 25:
                 $('#K192').html("<br>`");
-                $('#K48').html("<br><span style='color: #6551d9;'>◌𖲀 </span>");
+                $('#K48').html("<span style='color: #b59bff;'>◌𖲜</span><br><span style='color: #6551d9;'>◌𖲀 </span>");
                 $('#K49').html("<span style='color: #b1bb13;'>◌𖲝</span><br><span style='color: #7ba064;'>◌𖲑</span>");
                 $('#K50').html("<span style='color: #b1bb13;'>◌𖲞</span><br><span style='color: #7ba064;'>◌𖲒</span>");
                 $('#K51').html("<span style='color: #b1bb13;'>◌𖲋 </span><br><span style='color: #7ba064;'>◌𖲃 </span>");
-                $('#K52').html("<br>𖲆");
+                $('#K52').html("<span style='color: #b1bb13;'>𖲍</span><br><span style='color: #7ba064;'>𖲆</span>");
                 $('#K53').html("<span style='color: #b1bb13;'>𖲌</span><br><span style='color: #7ba064;'>◌𖲄</span>");
-                $('#K54').html("<span style='color: #b1bb13;'>𖲍</span><br><span style='color: #7ba064;'>𖲈</span>");
+                $('#K54').html("<span style='color: #b1bb13;'>◌𖲖</span><br><span style='color: #7ba064;'>𖲈</span>");
                 $('#K55').html("<span style='color: #b1bb13;'>◌𖲔</span><br><span style='color: #7ba064;'>𖲐</span>");
                 $('#K56').html("<span style='color: #b1bb13;'>𖲊</span><br><span style='color: #7ba064;'>◌𖲂 </span>");
                 $('#K57').html("<span style='color: #b1bb13;'>◌𖲕 </span><br><span style='color: #7ba064;'>◌𖲉 </span>");
@@ -5416,7 +5418,7 @@ function loadkeyboard() {
                 $('#K67').html("<span style='color: #d22e9f;'>𖱛   </span><br>𖱚");
                 $('#K86').html("<span style='color: #13abbb;'>𖱺   </span><br>𖱻");
                 $('#K66').html("<span style='color: #d22e9f;'>𖱫   </span><br>𖱪");
-                $('#K78').html("<span style='color: #13abbb;'>𖱨  </span><span style='color: #b59bff;'>𖲎</span><br>𖱩");
+                $('#K78').html("<span style='color: #13abbb;'>𖱨 </span><span style='color: #b59bff;'>𖲎</span><br>𖱩");
                 $('#K77').html("<span style='color: #13abbb;'>𖱲  </span><span style='color: #b59bff;'>𖲏</span><br>𖱳");
                 $('#K188').html("<br>,");
                 $('#K190').html("<br>.");
