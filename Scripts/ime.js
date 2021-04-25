@@ -5373,7 +5373,7 @@ function loadkeyboard() {
                 $('#K70').html("<span style='color: #d22e9f;'>ᦝ   </span><br>ᦚ");
                 $('#K71').html("<span style='color: #13abbb;'>ᦄ   </span><br><span style='color: #13abbb;'>ᧂ  </span>ᦇ");
                 $('#K72').html("<br><span style='color: #2f80b9;'>ᦠ</span>");
-                $('#K74').html("<span style='color: #13abbb;'>ᦍ </span><span style='color: #4fd454;'>ᦩ</span><br>ᦆ");
+                $('#K74').html("<span style='color: #d22e9f;'>ᦍ </span><span style='color: #4fd454;'>ᦩ</span><br>ᦆ");
                 $('#K75').html("<span style='color: #4fd454;'>ᦦ</span><br><span style='color: #13abbb;'>ᧅ </span>ᦂ");
                 $('#K76').html("<span style='color: #13abbb;'>ᦜ   </span><br>ᦟ");
                 $('#K186').html("<br>;");
