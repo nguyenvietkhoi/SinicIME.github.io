@@ -525,7 +525,7 @@ function TaiPaoRoma(w) {
     var toneclass = 1;
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("qrtpsdđfghjklzxcvbnm".includes(c)) {
+        if ("qrtpsdđfghjklzxcvbnmy".includes(c)) {
             ipa.onset += c;
         }
         else {
@@ -930,7 +930,7 @@ function TayIPA(w, accent) {
     var toneclass = 1;
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("qrtpsdđfghjklzxcvbnm".includes(c)) {
+        if ("qrtpsdđfghjklzxcvbnmy".includes(c)) {
             ipa.onset += c;
         }
         else {
