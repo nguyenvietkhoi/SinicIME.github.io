@@ -560,7 +560,7 @@ function TaiPaoRoma(w) {
         }
     }
     var deadcons = ipa.rime.slice(ipa.rime.length - 1)
-    if ("pkt".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 1) == "ch"))
+    if ("pkt".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 2) == "ch"))
         ipa.tone += "ˀ";
 
     if (ipa.tone == "") {
@@ -569,7 +569,7 @@ function TaiPaoRoma(w) {
     if (ipa.onset == "") {
         ipa.onset = "ʔ";
     }
-    if (!['tr'].includes(ipa.onset) && (toneclass == 2)) {
+    if (toneclass == 2) {
         ipa.onset += "`";
     }
     if (ipa.rime[0] == "w") {
@@ -782,7 +782,7 @@ function TaiYoRoma(w) {
     var toneclass = 1;
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("qrtpsdđfghjklzxcvbnm".includes(c)) {
+        if ("qrtpsdđfghjklzxcvbnmy".includes(c)) {
             ipa.onset += c;
         }
         else {
@@ -817,7 +817,7 @@ function TaiYoRoma(w) {
         }
     }
     var deadcons = ipa.rime.slice(ipa.rime.length - 1)
-    if ("pkt".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 1) == "ch"))
+    if ("pkt".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 2) == "ch"))
         ipa.tone += "ˀ";
 
     if (ipa.tone == "") {
@@ -930,7 +930,7 @@ function TayIPA(w, accent) {
     var toneclass = 1;
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("qrtpsdđfghjklzxcvbnmy".includes(c)) {
+        if ("qrtpsdđfghjklzxcvbnm".includes(c)) {
             ipa.onset += c;
         }
         else {
@@ -969,7 +969,7 @@ function TayIPA(w, accent) {
         }
     }
     var deadcons = ipa.rime.slice(ipa.rime.length - 1)
-    if ("pct".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 1) == "ch"))
+    if ("pct".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 3) == "ch"))
         ipa.tone += "ˀ";
 
     if (ipa.tone == "") {
@@ -1047,7 +1047,7 @@ function VietIPA(w, accent) {
         }
     }
     var deadcons = ipa.rime.slice(ipa.rime.length - 1)
-    if ("pct".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 1) == "ch"))
+    if ("pct".includes(deadcons) || (ipa.rime.slice(ipa.rime.length - 2) == "ch"))
         ipa.tone += "ˀ";
 
     if (ipa.tone == "") {
