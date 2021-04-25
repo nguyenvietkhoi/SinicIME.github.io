@@ -606,7 +606,7 @@ function TaiPaoRoma(w) {
     else
         return w;
 
-    return "" + ipa.onset + ipa.tone + ipa.rime;
+    return ("" + ipa.onset + ipa.tone + ipa.rime).replace("𖲑𖲂", "𖲂𖲑").replace("𖲑𖲄", "𖲄𖲑").replace("𖲑𖲃", "𖲃𖲑").replace("𖲑𖲋", "𖲋𖲑").replace("𖲑𖲖", "𖲖𖲑").replace("𖲑𖲔", "𖲔𖲑").replace("𖲑𖲉", "𖲉𖲑").replace("𖲑𖲕", "𖲕𖲑").replace("𖲑𖲇", "𖲇𖲑").replace("𖲑𖲀", "𖲀𖲑").replace("𖲑𖲜", "𖲜𖲑").replace("𖲒𖲂", "𖲂𖲒").replace("𖲒𖲄", "𖲄𖲒").replace("𖲒𖲃", "𖲃𖲒").replace("𖲒𖲋", "𖲋𖲒").replace("𖲒𖲖", "𖲖𖲒").replace("𖲒𖲔", "𖲔𖲒").replace("𖲒𖲉", "𖲉𖲒").replace("𖲒𖲕", "𖲕𖲒").replace("𖲒𖲇", "𖲇𖲒").replace("𖲒𖲀", "𖲀𖲒").replace("𖲒𖲜", "𖲜𖲒");
 }
 
 function TaiYoIPA(w, accent) {
