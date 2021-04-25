@@ -382,7 +382,10 @@ function TaiPaoIPA(w, accent) {
                 if ("𖲀𖲉𖲈𖲄𖲂𖲃𖲇".includes(ipa.rime) && ipa.tone != "𖲑")
                     ipa.tone = "5";
                 else {
-                    ipa.rime = ipa.tone + ipa.rime;
+                    if (ipa.rime == '𖲈')
+                        ipa.rime = ipa.tone + ipa.rime;
+                    else
+                        ipa.rime = ipa.rime + ipa.tone;
                     ipa.tone = "4";
                 }
                 ipa.rime += c;
@@ -583,7 +586,7 @@ function TaiPaoRoma(w) {
     else
         return w;
 
-    if ("𖲀𖲉𖲈𖲄𖲂𖲃𖲇".includes([...ipa.rime][0])) {
+    if ("𖲀𖲉𖲈𖲄𖲂𖲃𖲇".includes([...ipa.rime][0]) && ![...ipa.rime].includes('𖲑')) {
         if (ipa.tone == "̣ˀ") {
             toneclass = 2;
             ipa.onset += "`";
@@ -874,7 +877,7 @@ function TaiYorimetone(rime, tone) {
     var rimetone = rime;
     switch (tone) {
         case "́":
-            rimetone = rime.replace("iê", "iế").replace("uô", "uố").replace("ươ", "ướ").replace("uu", "uú").replace("ii", "ií");
+            rimetone = rime.replace("iê", "iế").replace("uô", "uố").replace("ươ", "ướ").replace("uu", "uú").replace("ii", "ií").replace("ưư", "ưứ");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "á").replace("ă", "ắ").replace("ơ", "ớ").replace("o", "ó").replace("ô", "ố").replace("e", "é").replace("ê", "ế").replace("u", "ú").replace("ư", "ứ");
                 if (rimetone == rime) {
@@ -883,7 +886,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̀":
-            rimetone = rime.replace("iê", "iề").replace("uô", "uồ").replace("ươ", "ườ").replace("uu", "uù").replace("ii", "iì");
+            rimetone = rime.replace("iê", "iề").replace("uô", "uồ").replace("ươ", "ườ").replace("uu", "uù").replace("ii", "iì").replace("ưư", "ưừ");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "à").replace("ă", "ằ").replace("ơ", "ờ").replace("o", "ò").replace("ô", "ồ").replace("e", "è").replace("ê", "ề").replace("u", "ù").replace("ư", "ừ");
                 if (rimetone == rime) {
@@ -892,7 +895,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̣":
-            rimetone = rime.replace("iê", "iệ").replace("uô", "uộ").replace("ươ", "ượ").replace("uu", "uụ").replace("ii", "iị");
+            rimetone = rime.replace("iê", "iệ").replace("uô", "uộ").replace("ươ", "ượ").replace("uu", "uụ").replace("ii", "iị").replace("ưư", "ưự");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ạ").replace("ă", "ặ").replace("ơ", "ợ").replace("o", "ọ").replace("ô", "ộ").replace("e", "ẹ").replace("ê", "ệ").replace("u", "ụ").replace("ư", "ự");
                 if (rimetone == rime) {
@@ -901,7 +904,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̄":
-            rimetone = rime.replace("iê", "iê̄").replace("uô", "uô̄").replace("ươ", "ươ̄").replace("uu", "uū").replace("ii", "iī");
+            rimetone = rime.replace("iê", "iê̄").replace("uô", "uô̄").replace("ươ", "ươ̄").replace("uu", "uū").replace("ii", "iī").replace("ưư", "ưư̄");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ā").replace("ă", "ă̄").replace("ơ", "ơ̄").replace("o", "ō").replace("ô", "ô̄").replace("e", "ē").replace("ê", "ê̄").replace("u", "ū").replace("ư", "ư̄");
                 if (rimetone == rime) {
@@ -910,7 +913,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̌":
-            rimetone = rime.replace("iê", "iê̌").replace("uô", "uô̌").replace("ươ", "ươ̌").replace("uu", "uǔ").replace("ii", "iǐ");
+            rimetone = rime.replace("iê", "iê̌").replace("uô", "uô̌").replace("ươ", "ươ̌").replace("uu", "uǔ").replace("ii", "iǐ").replace("ưư", "ưư̌");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ǎ").replace("ă", "ă̌").replace("ơ", "ơ̌").replace("o", "ǒ").replace("ô", "ô̌").replace("e", "ě").replace("ê", "ê̌").replace("u", "ǔ").replace("ư", "ư̌");
                 if (rimetone == rime) {
