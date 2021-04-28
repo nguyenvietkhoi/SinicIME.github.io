@@ -609,7 +609,8 @@ function TaiPaoRoma(w) {
     else
         return w;
 
-    return ("" + ipa.onset + ipa.tone + ipa.rime).replace("𖲑𖲂", "𖲂𖲑").replace("𖲑𖲄", "𖲄𖲑").replace("𖲑𖲃", "𖲃𖲑").replace("𖲑𖲋", "𖲋𖲑").replace("𖲑𖲖", "𖲖𖲑").replace("𖲑𖲔", "𖲔𖲑").replace("𖲑𖲉", "𖲉𖲑").replace("𖲑𖲕", "𖲕𖲑").replace("𖲑𖲇", "𖲇𖲑").replace("𖲑𖲀", "𖲀𖲑").replace("𖲑𖲜", "𖲜𖲑").replace("𖲒𖲂", "𖲂𖲒").replace("𖲒𖲄", "𖲄𖲒").replace("𖲒𖲃", "𖲃𖲒").replace("𖲒𖲋", "𖲋𖲒").replace("𖲒𖲖", "𖲖𖲒").replace("𖲒𖲔", "𖲔𖲒").replace("𖲒𖲉", "𖲉𖲒").replace("𖲒𖲕", "𖲕𖲒").replace("𖲒𖲇", "𖲇𖲒").replace("𖲒𖲀", "𖲀𖲒").replace("𖲒𖲜", "𖲜𖲒");
+    var res = ("" + ipa.onset + ipa.tone + ipa.rime).replace("𖲑𖲂", "𖲂𖲑").replace("𖲑𖲄", "𖲄𖲑").replace("𖲑𖲃", "𖲃𖲑").replace("𖲑𖲋", "𖲋𖲑").replace("𖲑𖲖", "𖲖𖲑").replace("𖲑𖲔", "𖲔𖲑").replace("𖲑𖲉", "𖲉𖲑").replace("𖲑𖲕", "𖲕𖲑").replace("𖲑𖲇", "𖲇𖲑").replace("𖲑𖲀", "𖲀𖲑").replace("𖲑𖲜", "𖲜𖲑").replace("𖲒𖲂", "𖲂𖲒").replace("𖲒𖲄", "𖲄𖲒").replace("𖲒𖲃", "𖲃𖲒").replace("𖲒𖲋", "𖲋𖲒").replace("𖲒𖲖", "𖲖𖲒").replace("𖲒𖲔", "𖲔𖲒").replace("𖲒𖲉", "𖲉𖲒").replace("𖲒𖲕", "𖲕𖲒").replace("𖲒𖲇", "𖲇𖲒").replace("𖲒𖲀", "𖲀𖲒").replace("𖲒𖲜", "𖲜𖲒");
+    return res;
 }
 
 function TaiYoIPA(w, accent) {
@@ -869,8 +870,8 @@ function TaiYoRoma(w) {
     }
     else
         return w;
-
-    return "" + ipa.onset + ipa.tone + ipa.rime.replace("◌", "");
+    var res = "" + ipa.onset + ipa.tone + ipa.rime.replace("◌", "");
+    return res.replace("𖰟𖰻𖰇", "𖱉");
 }
 
 function TaiYorimetone(rime, tone) {
