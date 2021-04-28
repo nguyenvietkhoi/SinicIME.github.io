@@ -870,7 +870,7 @@ function TaiYoRoma(w) {
     else
         return w;
 
-    return "" + ipa.onset + ipa.tone + ipa.rime;
+    return "" + ipa.onset + ipa.tone + ipa.rime.replace("◌", "");
 }
 
 function TaiYorimetone(rime, tone) {
