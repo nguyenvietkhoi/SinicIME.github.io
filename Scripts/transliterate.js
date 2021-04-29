@@ -652,7 +652,7 @@ function TaiYoIPA(w, accent) {
                 ipa.toneclass = 0;
                 continue;
             }
-            else if ((ipa.rime != "") && ("𖰍𖰧𖰇𖰕𖰟".includes(c))) {
+            else if ((ipa.rime != "") && ("𖰌𖰧𖰇𖰕𖰟".includes(c))) {
                 tmpconso = c;
                 if (ipa.tone == "") {
                     ipa.tone = "0";
