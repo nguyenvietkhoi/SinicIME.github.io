@@ -25,6 +25,9 @@
     };
     xhr.send();
 
+    function toneB2() {
+        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + "̱")
+    }
     function inverse() {
         dictbool = !dictbool;
         if (dictbool) 
@@ -179,10 +182,11 @@
 <div class="Home_container">
     <div style="padding:60px 5px 5px 0px" >
         <input type="text" class="textpad Home_box" id="oriPad" placeholder="Từ cần tra..." name="ori">
+        <button class="Home_button" onclick=toneB2()>&nbsp;a̱&nbsp;</button>
         <button class="Home_button" onclick=lookupOri()>🔍</button>
-        <button class="Home_button" onclick=showAlphabet()>⌨️</button>
+        <!--<button class="Home_button" onclick=showAlphabet()>⌨️</button>-->
     </div>
-    <div id="alphabet" style="margin: 0;display: none">
+    <!--<div id="alphabet" style="margin: 0;display: none">
 <table class="textpad">
   <tr>
     <td></td><td>ă</td><td>â</td><td>đ</td><td>ê</td><td>j</td><td>z</td><td>ô</td><td>ơ</td><td>f</td><td>ư</td><td>đ</td>
@@ -198,7 +202,7 @@
     <td>ạ</td><td>ặ</td><td>ậ</td><td>ẹ</td><td>ệ</td><td>ị</td><td>ọ</td><td>ộ</td><td>ợ</td><td>ụ</td><td>ự</td><td>ỵ</td>
   </tr>
 </table>
-    </div>
+    </div>-->
     <div styles="Home_main" id="maincontent"></div>
 </div>
 <footer style="margin: 0 0 0 30px; font-size: 12px;">
