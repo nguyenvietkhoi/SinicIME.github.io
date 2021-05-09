@@ -630,8 +630,8 @@ function TaiYoIPA(w, accent) {
                 else if ("𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰟𖰝𖰧𖰩".includes(c))
                     ipa.toneclass = 2;
             }
-            else if ((ipa.rime == "") && (ipa.tone == "") && ("𖰁𖰂𖰃𖰄𖰅𖰇𖰆".includes(ipa.onset)) && (c == "𖰧") && (!ipa.onset2.endsWith("1"))) {
-                c = "𖰧1";
+            else if ((ipa.rime == "") && (ipa.tone == "") && ("𖰁𖰂𖰃𖰄𖰅𖰇𖰆".includes(ipa.onset)) && (c == "𖰦") && (!ipa.onset2.endsWith("1"))) {
+                c = "𖰦1";
                 ipa.onset2 += c;
             }
             else if ((ipa.rime != "") && ("𖰀𖰎𖰖".includes(c))) {
@@ -652,7 +652,7 @@ function TaiYoIPA(w, accent) {
                 ipa.toneclass = 0;
                 continue;
             }
-            else if ((ipa.rime != "") && ("𖰌𖰧𖰇𖰕𖰟".includes(c))) {
+            else if ((ipa.rime != "") && ("𖰌𖰦𖰇𖰕𖰟".includes(c))) {
                 tmpconso = c;
                 if (ipa.tone == "") {
                     ipa.tone = "0";
@@ -835,7 +835,7 @@ function TaiYoRoma(w) {
     }
     if (ipa.rime[0] == "w") {
         if (['k`', 'ng', 'ng`', 'kh', 'kh`', 'g', 'g`'].includes(ipa.onset))
-            ipa.glide = "𖰧";
+            ipa.glide = "𖰦";
         else if (ipa.onset == 'k')
             ipa.onset = 'kw';
 
