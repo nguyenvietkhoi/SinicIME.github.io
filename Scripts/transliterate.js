@@ -382,10 +382,10 @@ function TaiPaoIPA(w, accent) {
                 if ("𖲀𖲉𖲈𖲄𖲂𖲃𖲇".includes(ipa.rime) && ipa.tone != "𖲑")
                     ipa.tone = "5";
                 else {
-                    if (ipa.rime == '𖲈')
-                        ipa.rime = ipa.tone + ipa.rime;
-                    else
+                    if ("𖲀𖲉𖲄𖲂𖲃𖲇".includes(ipa.rime))
                         ipa.rime = ipa.rime + ipa.tone;
+                    else
+                        ipa.rime = ipa.tone + ipa.rime;
                     ipa.tone = "4";
                 }
                 ipa.rime += c;
@@ -579,6 +579,9 @@ function TaiPaoRoma(w) {
         ipa.glide = "𖱻";
         ipa.rime = ipa.rime.substring(1);
     }
+    if (ipa.rime == "â") {
+        ipa.rime = "ơ";
+    }
 
     ipaSQL = ipadb.exec("SELECT phone FROM TaiPao where roman='" + ipa.rime + "' ");
     if (ipaSQL.length > 0)
@@ -634,7 +637,7 @@ function TaiYoIPA(w, accent) {
                 c = "𖰦1";
                 ipa.onset2 += c;
             }
-            else if ((ipa.rime != "") && ("𖰀𖰎𖰖".includes(c))) {
+            else if ((ipa.rime != "") && ("𖰀𖰎𖰖".includes(c)) && (!"𖰷𖰽𖰿".includes(ipa.rime))) {
                 tmpconso = c;
                 if ("𖰸𖰳𖰹𖰵𖰴𖰾".includes(ipa.rime) && ipa.tone != "𖱊")
                     ipa.tone = "5";
@@ -652,7 +655,7 @@ function TaiYoIPA(w, accent) {
                 ipa.toneclass = 0;
                 continue;
             }
-            else if ((ipa.rime != "") && ("𖰌𖰦𖰇𖰕𖰟".includes(c))) {
+            else if ((ipa.rime != "") && ("𖰌𖰦𖰇𖰕𖰟".includes(c)) && (!"𖰷𖰽𖰿".includes(ipa.rime))) {
                 tmpconso = c;
                 if (ipa.tone == "") {
                     ipa.tone = "0";
@@ -840,6 +843,9 @@ function TaiYoRoma(w) {
             ipa.onset = 'kw';
 
         ipa.rime = ipa.rime.substring(1);
+    }
+    if (ipa.rime == "â") {
+        ipa.rime = "ơ";
     }
 
     ipaSQL = ipadb.exec("SELECT phone FROM TaiYo where roman='" + ipa.rime + "' ");
