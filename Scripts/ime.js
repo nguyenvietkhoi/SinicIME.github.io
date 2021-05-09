@@ -166,7 +166,8 @@ function opttableselect(tablesel) {
             break;
         case 11: opttable = "rubyyay";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>→ abc</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>→ abc: ' + $("#Sapa").val() + '</a></li>' +
+                '<li onclick="convertpad(0,14)"><a>→ abc: ' + $("#WeangzMox").val() + '</a></li>' + convertdeftext);
             break;
         case 12: opttable = "rubysaek";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
