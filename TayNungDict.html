@@ -25,16 +25,18 @@
     };
     xhr.send();
 
-    document.getElementById("oriPad").addEventListener("keyup", function (event) {
-        // Number 13 is the "Enter" key on the keyboard
-        if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            lookupOri();
-        }
-    });
-
+    window.onload = function () {
+        var inputpad = document.getElementById("oriPad");
+        inputpad.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                lookupOri();
+            }
+        });
+    }
     function toneB2() {
         document.getElementById("oriPad").value = (document.getElementById("oriPad").value + "̱")
     }
