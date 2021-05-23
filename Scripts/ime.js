@@ -2545,6 +2545,7 @@ function TAIYO(text, ch) {
         case '\'r': roma = "𖰢"; break;
         case '\'u': roma = "𖰯"; break;
         case '\'i': roma = "𖰮"; break;
+        case '\'9': roma = "𖱏"; break;
         case '𖰂h': roma = "𖰨"; break;
         case '𖰒h': roma = "𖰩"; break;
         case '𖰀h': roma = "𖰄"; break;
@@ -5407,7 +5408,7 @@ function loadkeyboard() {
                 $('#K54').html("<br>𖰾");
                 $('#K55').html("<br><span style='color: #ffc000;'>◌𖰿</span>");
                 $('#K56').html("<br>𖰺");
-                $('#K57').html("<br>𖰸");
+                $('#K57').html("<span style='color: #d22e9f;'>𖱏    </span><br>𖰸");
                 $('#K81').html("<span style='color: #d22e9f;'>𖰭    </span><br>𖰬");
                 $('#K87').html("<span style='color: #d22e9f;'>𖰛   </span><br>𖰚");
                 $('#K69').html("<span style='color: #d22e9f;'>𖰣  </span><br>𖰹");

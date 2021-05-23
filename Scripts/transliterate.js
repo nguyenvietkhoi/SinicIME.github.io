@@ -365,12 +365,12 @@ function TaiPaoIPA(w, accent) {
 
     for (var i = 0; i < [...w].length; i++) {
         var c = [...w][i];
-        if ("𖱐𖱔𖱘𖱼𖱾𖱖𖱚𖱠𖱴𖱢𖱤𖱦𖱨𖱞𖱸𖱪𖱬𖱮𖱳𖱰𖱺𖱜𖱒𖱶𖱑𖱕𖱙𖱽𖱿𖱗𖱛𖱡𖱵𖱣𖱥𖱧𖱩𖱧𖱷𖱹𖱫𖱭𖱯𖱳𖱱𖱻𖱝𖱓".includes(c)) {
+        if ("𖱐𖱔𖱘𖱼𖱾𖱖𖱚𖱠𖱴𖱢𖱤𖱦𖱨𖱞𖱸𖱪𖱬𖱮𖱳𖱰𖱺𖱜𖱒𖱶𖱑𖱕𖱙𖱽𖱿𖱗𖱛𖱡𖱵𖱣𖱥𖱧𖱩𖱟𖱷𖱹𖱫𖱭𖱯𖱳𖱱𖱻𖱝𖱓".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
                 if ("𖱐𖱔𖱘𖱼𖱾𖱖𖱚𖱠𖱴𖱢𖱤𖱦𖱨𖱞𖱸𖱪𖱬𖱮𖱳𖱰𖱺𖱜𖱒𖱶".includes(c))
                     ipa.toneclass = 1;
-                else if ("𖱑𖱕𖱙𖱽𖱿𖱗𖱛𖱡𖱵𖱣𖱥𖱧𖱩𖱧𖱷𖱹𖱫𖱭𖱯𖱳𖱱𖱻𖱝𖱓".includes(c))
+                else if ("𖱑𖱕𖱙𖱽𖱿𖱗𖱛𖱡𖱵𖱣𖱥𖱧𖱩𖱟𖱷𖱹𖱫𖱭𖱯𖱳𖱱𖱻𖱝𖱓".includes(c))
                     ipa.toneclass = 2;
             }
             else if ((ipa.rime == "") && (ipa.tone == "") && (ipa.onset != "") && (c == "𖱻") && (!ipa.onset2.endsWith("1"))) {
@@ -625,12 +625,12 @@ function TaiYoIPA(w, accent) {
     w = w.replace('𖱉', '𖰟𖰻𖰇');
     for (var i = 0; i < [...w].length; i++) {
         var c = [...w][i];
-        if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰟𖰜𖰦𖰨𖰮𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰞𖰝𖰧𖰩".includes(c)) {
+        if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰟𖰜𖰦𖰨𖰮𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰞𖰝𖰧𖰩𖰯".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
                 if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰞𖰜𖰦𖰨𖰮".includes(c))
                     ipa.toneclass = 1;
-                else if ("𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰟𖰝𖰧𖰩".includes(c))
+                else if ("𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰟𖰝𖰧𖰩𖰯".includes(c))
                     ipa.toneclass = 2;
             }
             else if ((ipa.rime == "") && (ipa.tone == "") && ("𖰁𖰂𖰃𖰄𖰅𖰇𖰆".includes(ipa.onset)) && (c == "𖰦") && (!ipa.onset2.endsWith("1"))) {
@@ -701,7 +701,7 @@ function TaiYoIPA(w, accent) {
         }
         else {
             if (ipa.onset == "") {
-                if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰟𖰜𖰦𖰨𖰮𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰞𖰝𖰧𖰩".includes(tmpconso)) {
+                if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰟𖰜𖰦𖰨𖰮𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰞𖰝𖰧𖰩𖰯".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
                     previpa.rime = [...previpa.rime].slice(0, -1);
@@ -832,9 +832,6 @@ function TaiYoRoma(w) {
     }
     if (ipa.onset == "") {
         ipa.onset = "ʔ";
-    }
-    if (!['tr'].includes(ipa.onset) && (toneclass == 2)) {
-        ipa.onset += "`";
     }
     if (ipa.rime[0] == "w") {
         if (['k`', 'ng', 'ng`', 'kh', 'kh`', 'g', 'g`'].includes(ipa.onset))
