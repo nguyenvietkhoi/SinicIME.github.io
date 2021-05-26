@@ -229,7 +229,10 @@ function opttableselect(tablesel) {
             break;
         case 23: opttable = "rubytailue";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>文 → ᦎ</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'PanNa\',20)"><a>IPA: ' + $("#PanNa").val() + '</a></li>' +
+                '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
+                '<li onclick="roma2phone()"><a>abc → ᦑ</a></li>' +
+                '<li onclick="convertpad(0,20)"><a>文 → ᦑ</a></li>' + convertdeftext);
             break;
         case 24: opttable = "rubytaiyo";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -774,6 +777,10 @@ function logo2ipa(accent, maxlevel) {
                         ipaword = TaiDamIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
                         break;
+                    case 'PanNa':
+                        ipaword = TaiLueIPA(word[i], accent);
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 'QuyChau':
                         ipaword = TaiYoIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
@@ -823,6 +830,10 @@ function logo2roman(maxlevel) {
                 convtxt += prespace + word[i];
             else {
                 switch (quocngu) {
+                    case 23:
+                        ipaword = TaiLueIPA(word[i], "roman");
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 24:
                         ipaword = TaiYoIPA(word[i], "roman");
                         convtxt += (prespace + ipaword);
@@ -919,6 +930,10 @@ function roma2phone() {
                 convtxt += prespace + word[i];
             else {
                 switch (quocngu) {
+                    case 23:
+                        ipaword = TaiLueRoma(word[i]);
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 24:
                         ipaword = TaiYoRoma(word[i]);
                         convtxt += (prespace + ipaword);
