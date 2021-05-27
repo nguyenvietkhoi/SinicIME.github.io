@@ -197,6 +197,8 @@ function opttableselect(tablesel) {
         case 17: opttable = "rubytaidam";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
             document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'SonLa\',20)"><a>IPA: ' + $("#SonLa").val() + '</a></li>' +
+                '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
+                '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
             break;
         case 18: opttable = "rubytaidon";
@@ -830,6 +832,10 @@ function logo2roman(maxlevel) {
                 convtxt += prespace + word[i];
             else {
                 switch (quocngu) {
+                    case 17:
+                        ipaword = TaiDamIPA(word[i], "roman");
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 23:
                         ipaword = TaiLueIPA(word[i], "roman");
                         convtxt += (prespace + ipaword);
@@ -930,6 +936,10 @@ function roma2phone() {
                 convtxt += prespace + word[i];
             else {
                 switch (quocngu) {
+                    case 17:
+                        ipaword = TaiDamRoma(word[i]);
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 23:
                         ipaword = TaiLueRoma(word[i]);
                         convtxt += (prespace + ipaword);
