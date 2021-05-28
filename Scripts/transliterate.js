@@ -1142,6 +1142,9 @@ function TaiYoRoma(w) {
     if (ipa.onset == "") {
         ipa.onset = "ʔ";
     }
+    if (toneclass == 2) {
+        ipa.onset += "`";
+    }
     if (ipa.rime[0] == "w") {
         if (['k`', 'ng', 'ng`', 'kh', 'kh`', 'g', 'g`'].includes(ipa.onset))
             ipa.glide = "𖰦";
