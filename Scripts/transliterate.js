@@ -549,10 +549,10 @@ function TaiDamIPA(w, accent) {
         if (accent == "roman") {
             ipatmp.onset[0] = ipatmp.onset[0].replace("kw", "qu");
             if ((ipatmp.onset[0] == "k") && !ipatmp.rime[0].startsWith("i") && !ipatmp.rime[0].startsWith("e") && !ipatmp.rime[0].startsWith("ê")) {
-                ipatmp.onset[0] = ipatmp.onset[0].replace("k", "c");
+                ipatmp.onset[0] = ipatmp.onset[0].replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
             if (ipatmp.rime[0].startsWith("i") || ipatmp.rime[0].startsWith("ơ") || ipatmp.rime[0].startsWith("ê") || ipatmp.rime[0].startsWith("â")) {
-                ipatmp.onset = ipatmp.onset.replace("w", "u");
+                ipatmp.onset[0] = ipatmp[0].onset.replace("w", "u");
             } else {
                 ipatmp.onset[0] = ipatmp.onset[0].replace("w", "o");
             }
@@ -791,6 +791,7 @@ function TaiDamRoma(w) {
         ipa.glide = "ꪫ";
         ipa.rime = ipa.rime.substring(1);
     }
+    ipa.onset = ipa.onset.replace("gh", "g");
     if ((ipa.onset == "c") || (ipa.onset == "c`"))
         ipa.onset = ipa.onset.replace("c", "k");
 
