@@ -552,7 +552,7 @@ function TaiDamIPA(w, accent) {
                 ipatmp.onset[0] = ipatmp.onset[0].replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
             if (ipatmp.rime[0].startsWith("i") || ipatmp.rime[0].startsWith("ơ") || ipatmp.rime[0].startsWith("ê") || ipatmp.rime[0].startsWith("â")) {
-                ipatmp.onset[0] = ipatmp[0].onset.replace("w", "u");
+                ipatmp.onset[0] = ipatmp.onset[0].replace("w", "u");
             } else {
                 ipatmp.onset[0] = ipatmp.onset[0].replace("w", "o");
             }
