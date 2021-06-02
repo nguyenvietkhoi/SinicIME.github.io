@@ -203,7 +203,10 @@ function opttableselect(tablesel) {
             break;
         case 18: opttable = "rubytaidon";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'MuongLay\',20)"><a>IPA: ' + $("#MuongLay").val() + '</a></li>' +
+                '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
+                '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
+                '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
             $("body").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
@@ -775,6 +778,10 @@ function logo2ipa(accent, maxlevel) {
                         ipaword = VietIPA(word[i], accent);
                         convtxt += (prespace + ipaword.onset + ipaword.rime + ipaword.tone);
                         break;
+                    case 'MuongLay':
+                        ipaword = TaiDonIPA(word[i], accent);
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 'SonLa':
                         ipaword = TaiDamIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
@@ -834,6 +841,10 @@ function logo2roman(maxlevel) {
                 switch (quocngu) {
                     case 17:
                         ipaword = TaiDamIPA(word[i], "roman");
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 18:
+                        ipaword = TaiDonIPA(word[i], "roman");
                         convtxt += (prespace + ipaword);
                         break;
                     case 23:
@@ -938,6 +949,10 @@ function roma2phone() {
                 switch (quocngu) {
                     case 17:
                         ipaword = TaiDamRoma(word[i]);
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 18:
+                        ipaword = TaiDonRoma(word[i]);
                         convtxt += (prespace + ipaword);
                         break;
                     case 23:
