@@ -482,14 +482,14 @@ function TaiDonIPA(w, accent) {
     var minorsyllable = "";
     ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='◌' ");
     if (ipaSQL.length > 0)
-        minorsyllable = ipaSQL[0].values[0];
+        minorsyllable = ipaSQL[0].values[0][0];
 
     while (ipalist.length != 0) {
         var ipatmp = ipalist.pop();
         var minortone = "";
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='ˀ" + ipatmp.toneclass + "' ");
         if (ipaSQL.length > 0)
-            minortone = ipaSQL[0].values[0];
+            minortone = ipaSQL[0].values[0][0];
         var onsets = [ipatmp.onset];
         if (ipatmp.onset2.endsWith("1")) {
             onsets = onsets.concat(ipatmp.onset2.slice(0, -2).split(''));
@@ -502,18 +502,18 @@ function TaiDonIPA(w, accent) {
 
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='" + onsets.join('') + "' ");
         if (ipaSQL.length > 0)
-            ipatmp.onset = ipaSQL[0].values[0];
+            ipatmp.onset = ipaSQL[0].values[0][0];
         else {
             ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='" + onsets[onsets.length - 1] + "' ");
             if (ipaSQL.length > 0)
-                ipatmp.onset = ipaSQL[0].values[0];
+                ipatmp.onset = ipaSQL[0].values[0][0];
             else {
                 ipatmp.onset = "∅";
             }
             for (var j = (onsets.length - 2) ; j >= 0; j--) {
                 ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='" + onsets[j] + "' ");
                 if (ipaSQL.length > 0)
-                    ipatmp.onset = ipaSQL[0].values[0] + minorsyllable + minortone + " " + ipatmp.onset;
+                    ipatmp.onset = ipaSQL[0].values[0][0] + minorsyllable + minortone + " " + ipatmp.onset;
                 else {
                     ipatmp.onset = "∅";
                 }
@@ -522,7 +522,7 @@ function TaiDonIPA(w, accent) {
         if (ipatmp.onset2 != "") {
             ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='" + ipatmp.onset2 + "' ");
             if (ipaSQL.length > 0)
-                ipatmp.onset += ipaSQL[0].values[0];
+                ipatmp.onset += ipaSQL[0].values[0][0];
             else {
                 ipastr = (" ∅") + ipastr;
                 continue;
@@ -532,7 +532,7 @@ function TaiDonIPA(w, accent) {
             ipatmp.tone = 'ˀ';
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='" + ipatmp.rime + "' ");
         if (ipaSQL.length > 0)
-            ipatmp.rime = ipaSQL[0].values[0];
+            ipatmp.rime = ipaSQL[0].values[0][0];
         else {
             ipastr = (" ∅") + ipastr;
             continue;
@@ -540,27 +540,27 @@ function TaiDonIPA(w, accent) {
         ipatmp.tone = ipatmp.tone.replace("꪿4", "4").replace("꫁4", "4");
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDon where phone='" + ipatmp.tone + ipatmp.toneclass + "' ");
         if (ipaSQL.length > 0)
-            ipatmp.tone = ipaSQL[0].values[0];
+            ipatmp.tone = ipaSQL[0].values[0][0];
         else {
             ipastr = (" ∅") + ipastr;
             continue;
         }
 
         if (accent == "roman") {
-            ipatmp.onset[0] = ipatmp.onset[0].replace("kw", "qu");
-            if ((ipatmp.onset[0] == "k") && !ipatmp.rime[0].startsWith("i") && !ipatmp.rime[0].startsWith("e") && !ipatmp.rime[0].startsWith("ê")) {
-                ipatmp.onset[0] = ipatmp.onset[0].replace("k", "c").replace("g", "gh").replace("ng", "ngh");
+            ipatmp.onset = ipatmp.onset.replace('`', '');
+            ipatmp.onset = ipatmp.onset.replace("kw", "qu");
+            if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
+                ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
-            if (ipatmp.rime[0].startsWith("i") || ipatmp.rime[0].startsWith("ơ") || ipatmp.rime[0].startsWith("ê") || ipatmp.rime[0].startsWith("â")) {
-                ipatmp.onset[0] = ipatmp.onset[0].replace("w", "u");
+            if (ipatmp.rime.startsWith("i") || ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â")) {
+                ipatmp.onset = ipatmp.onset.replace("w", "u");
             } else {
-                ipatmp.onset[0] = ipatmp.onset[0].replace("w", "o");
+                ipatmp.onset = ipatmp.onset.replace("w", "o");
             }
-            if ((ipatmp.tone[0] == "́4") && (!ipatmp.rime[0].endsWith("c"))) {
-                ipatmp.tone[0] = "";
+            if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
+                ipatmp.tone = "";
             }
-            ipatmp.onset = (ipatmp.onset + "").replace('`', '');
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
+            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
@@ -852,14 +852,14 @@ function TaiDamIPA(w, accent) {
     var minorsyllable = "";
     ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='◌' ");
     if (ipaSQL.length > 0)
-        minorsyllable = ipaSQL[0].values[0];
+        minorsyllable = ipaSQL[0].values[0][0];
 
     while (ipalist.length != 0) {
         var ipatmp = ipalist.pop();
         var minortone = "";
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='ˀ" + ipatmp.toneclass + "' ");
         if (ipaSQL.length > 0)
-            minortone = ipaSQL[0].values[0];
+            minortone = ipaSQL[0].values[0][0];
         var onsets = [ipatmp.onset];
         if (ipatmp.onset2.endsWith("1")) {
             onsets = onsets.concat(ipatmp.onset2.slice(0, -2).split(''));
@@ -872,18 +872,18 @@ function TaiDamIPA(w, accent) {
 
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='" + onsets.join('') + "' ");
         if (ipaSQL.length > 0)
-            ipatmp.onset = ipaSQL[0].values[0];
+            ipatmp.onset = ipaSQL[0].values[0][0];
         else {
             ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='" + onsets[onsets.length - 1] + "' ");
             if (ipaSQL.length > 0)
-                ipatmp.onset = ipaSQL[0].values[0];
+                ipatmp.onset = ipaSQL[0].values[0][0];
             else {
                 ipatmp.onset = "∅";
             }
             for (var j = (onsets.length - 2); j >= 0; j--) {
                 ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='" + onsets[j] + "' ");
                 if (ipaSQL.length > 0)
-                    ipatmp.onset = ipaSQL[0].values[0] + minorsyllable + minortone + " " + ipatmp.onset;
+                    ipatmp.onset = ipaSQL[0].values[0][0] + minorsyllable + minortone + " " + ipatmp.onset;
                 else {
                     ipatmp.onset = "∅";
                 }
@@ -892,7 +892,7 @@ function TaiDamIPA(w, accent) {
         if (ipatmp.onset2 != "") {
             ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='" + ipatmp.onset2 + "' ");
             if (ipaSQL.length > 0)
-                ipatmp.onset += ipaSQL[0].values[0];
+                ipatmp.onset += ipaSQL[0].values[0][0];
             else {
                 ipastr = (" ∅") + ipastr;
                 continue;
@@ -902,7 +902,7 @@ function TaiDamIPA(w, accent) {
             ipatmp.tone = 'ˀ';
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='" + ipatmp.rime + "' ");
         if (ipaSQL.length > 0)
-            ipatmp.rime = ipaSQL[0].values[0];
+            ipatmp.rime = ipaSQL[0].values[0][0];
         else {
             ipastr = (" ∅") + ipastr;
             continue;
@@ -910,27 +910,27 @@ function TaiDamIPA(w, accent) {
         ipatmp.tone = ipatmp.tone.replace("꪿4", "4").replace("꫁4", "4");
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDam where phone='" + ipatmp.tone + ipatmp.toneclass + "' ");
         if (ipaSQL.length > 0)
-            ipatmp.tone = ipaSQL[0].values[0];
+            ipatmp.tone = ipaSQL[0].values[0][0];
         else {
             ipastr = (" ∅") + ipastr;
             continue;
         }
 
         if (accent == "roman") {
-            ipatmp.onset[0] = ipatmp.onset[0].replace("kw", "qu");
-            if ((ipatmp.onset[0] == "k") && !ipatmp.rime[0].startsWith("i") && !ipatmp.rime[0].startsWith("e") && !ipatmp.rime[0].startsWith("ê")) {
-                ipatmp.onset[0] = ipatmp.onset[0].replace("k", "c").replace("g", "gh").replace("ng", "ngh");
+            ipatmp.onset = ipatmp.onset.replace('`', '');
+            ipatmp.onset = ipatmp.onset.replace("kw", "qu");
+            if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
+                ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
-            if (ipatmp.rime[0].startsWith("i") || ipatmp.rime[0].startsWith("ơ") || ipatmp.rime[0].startsWith("ê") || ipatmp.rime[0].startsWith("â")) {
-                ipatmp.onset[0] = ipatmp.onset[0].replace("w", "u");
+            if (ipatmp.rime.startsWith("i") || ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â")) {
+                ipatmp.onset = ipatmp.onset.replace("w", "u");
             } else {
-                ipatmp.onset[0] = ipatmp.onset[0].replace("w", "o");
+                ipatmp.onset = ipatmp.onset.replace("w", "o");
             }
-            if ((ipatmp.tone[0] == "́4") && (!ipatmp.rime[0].endsWith("c"))) {
-                ipatmp.tone[0] = "";
+            if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
+                ipatmp.tone = "";
             }
-            ipatmp.onset = (ipatmp.onset + "").replace('`', '');
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
+            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
