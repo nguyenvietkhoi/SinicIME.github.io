@@ -1184,9 +1184,9 @@ function TaiDonRoma(w) {
 
     if ("pt".includes(deadcons)) {
         if (ipa.rime.startsWith("ă") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("ê") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("i") || ipa.rime.startsWith("u") || ipa.rime.startsWith("ư") || ipa.rime.startsWith("uơ") || ipa.rime.startsWith("ơ")) {
-            ipa.tone += "4";
+            ipa.tone = "4";
         } else {
-            ipa.tone += "5";
+            ipa.tone = "5";
         }
     }
 
@@ -1287,9 +1287,9 @@ function TaiDamRoma(w) {
 
     if ("pt".includes(deadcons)) {
         if (ipa.rime.startsWith("ă") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("ê") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("i") || ipa.rime.startsWith("u") || ipa.rime.startsWith("ư") || ipa.rime.startsWith("uơ") || ipa.rime.startsWith("ơ")) {
-            ipa.tone += "4";
+            ipa.tone = "4";
         } else {
-            ipa.tone += "5";
+            ipa.tone = "5";
         }
     }
 
