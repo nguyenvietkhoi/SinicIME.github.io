@@ -12,7 +12,7 @@
 
     // Connect to sqlite db file
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', './Resources/taynungdict.jpg', true);
+    xhr.open('GET', '../Resources/taynungdict.jpg', true);
     xhr.responseType = 'arraybuffer';
     xhr.onload = function (e) {
         var uInt8Array = new Uint8Array(this.response);
@@ -24,7 +24,6 @@
         $("#oriPad").focus();
     };
     xhr.send();
-
     window.onload = function () {
         var inputpad = document.getElementById("oriPad");
         inputpad.addEventListener("keyup", function (event) {
@@ -38,7 +37,8 @@
         });
     }
     function toneB2() {
-        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + "̱")
+        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + "̱");
+        document.getElementById("oriPad").focus();
     }
     function inverse() {
         dictbool = !dictbool;
@@ -113,7 +113,7 @@
     <link href="./Content/Site.css" rel="stylesheet">
     <style>
         body {
-              padding: 0;margin: 0;color: #fff;background: url(./Resources/trong.png);
+              padding: 0;margin: 0;color: #fff;background: url(/Resources/trong.png);
         }
         #dict {
             color:#eee;
@@ -167,6 +167,24 @@
       max-width: 180px;
   }
 }
+
+.Home_button .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin: 4rem -3rem;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.Home_button:hover .tooltiptext {
+  visibility: visible;
+}
     </style>
 </head>
 
@@ -183,9 +201,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="http://linguaevum.ddns.net/"><img src="./Resources/tho.png" class="logo"></a>
-            <a class="navbar-brand" href="/SinicIME">Sinic IME</a>
+            <a class="navbar-brand" href="/Home/IME">Sinic IME</a>
             <div class="Home_title">
-                Từ điển <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Tày → Việt</a></box>
+                Từ điển <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Tày Nùng → Việt</a></box>
             </div>
         </div>
     </div>
@@ -194,8 +212,8 @@
 <div class="Home_container">
     <div style="padding:60px 5px 5px 0px" >
         <input type="text" class="textpad Home_box" id="oriPad" placeholder="Từ cần tra..." name="ori">
-        <button class="Home_button" onclick=toneB2()>&nbsp;a̱&nbsp;</button>
-        <button class="Home_button" onclick=lookupOri()>🔍</button>
+        <button class="Home_button" onclick=toneB2()>&nbsp;a̱&nbsp;<span class="tooltiptext">Thanh lửng (B2)</span></button>
+        <button class="Home_button" onclick=lookupOri()>🔍<span class="tooltiptext">Tìm</span></button>
         <!--<button class="Home_button" onclick=showAlphabet()>⌨️</button>-->
     </div>
     <!--<div id="alphabet" style="margin: 0;display: none">
