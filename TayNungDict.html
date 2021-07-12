@@ -60,7 +60,7 @@
         if (dictbool)
             contents = condb.exec('SELECT * FROM taynung WHERE ori = \'' + orireq + '\' UNION ALL SELECT * FROM taynung WHERE ori LIKE \'% ' + orireq + ' %\' OR ori LIKE \'' + orireq + ' %\' OR ori LIKE \'% ' + orireq + '\'');
         else
-            contents = condb.exec('SELECT * FROM taynung WHERE viet = \'' + orireq + '\' UNION ALL SELECT * FROM taynung WHERE viet LIKE \'% ' + orireq + ' %\' OR viet LIKE \'' + orireq + ' %\' OR viet LIKE \'% ' + orireq + '\' OR viet = \'' + orireq + '\'');
+            contents = condb.exec('SELECT * FROM taynung WHERE viet = \'' + orireq + '\' UNION ALL SELECT * FROM taynung WHERE viet LIKE \'% ' + orireq + ' %\' OR viet LIKE \'' + orireq + ' %\' OR viet LIKE \'% ' + orireq + '\'');
 
         if (contents.length != 0) {
             contents[0].values.forEach(function (word) {
