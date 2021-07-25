@@ -1651,6 +1651,10 @@ function TaiYoRoma(w) {
             ipa.onset = ipa.onset.replace('`', '');
         }
     }
+    if (ipa.onset == 'kw`') {
+        ipa.onset = 'k`';
+        ipa.glide = "𖰦";
+    }
 
     ipaSQL = ipadb.exec("SELECT phone FROM TaiYo where roman='" + ipa.onset + "' ");
     if (ipaSQL.length > 0)
