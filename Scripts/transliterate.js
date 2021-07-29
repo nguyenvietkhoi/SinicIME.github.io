@@ -1416,10 +1416,12 @@ function TaiYoIPA(w, accent) {
         if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰟𖰜𖰦𖰨𖰮𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰞𖰝𖰧𖰩𖰯".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
-                if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰞𖰜𖰦𖰨𖰮".includes(c))
+                if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰐𖰒𖰔𖰊𖰢𖰤𖰘𖰚𖰞𖰜𖰦𖰨𖰮".includes(c))
                     ipa.toneclass = 1;
                 else if ("𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰟𖰝𖰧𖰩𖰯".includes(c))
                     ipa.toneclass = 2;
+                else if ("𖰠𖰎𖰖".includes(c))
+                    ipa.toneclass = 3;
             }
             else if ((ipa.rime == "") && (ipa.tone == "") && ("𖰁𖰂𖰃𖰄𖰅𖰇𖰆".includes(ipa.onset)) && (c == "𖰦") && (!ipa.onset2.endsWith("1"))) {
                 c = "𖰦1";
@@ -1529,6 +1531,14 @@ function TaiYoIPA(w, accent) {
 
     while (ipalist.length != 0) {
         var ipatmp = ipalist.pop();
+
+        if (ipatmp.toneclass == 3) {
+            if ((accent == "ChauLi") && (ipatmp.tone == 0))
+                ipatmp.toneclass = 2;
+            else
+                ipatmp.toneclass = 1;
+        }
+
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiYo where phone='" + ipatmp.onset + "' ");
         if (ipaSQL.length > 0)
             ipatmp.onset = ipaSQL[0].values[0];

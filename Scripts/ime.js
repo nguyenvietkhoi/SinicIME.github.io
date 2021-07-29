@@ -241,7 +241,7 @@ function opttableselect(tablesel) {
             break;
         case 24: opttable = "rubytaiyo";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\',20)"><a>IPA: ' + $("#QuyChau").val() + '</a></li>' +
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\',20)"><a>IPA: ' + $("#QuyChau").val() + '</a></li>' + '<li onclick="logo2ipa(\'ChauLi\',20)"><a>IPA: ' + $("#ChauLi").val() +
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → 𖰑</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → 𖰑</a></li>' + convertdeftext);
@@ -790,7 +790,7 @@ function logo2ipa(accent, maxlevel) {
                         ipaword = TaiLueIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
                         break;
-                    case 'QuyChau':
+                    case 'QuyChau': case 'ChauLi':
                         ipaword = TaiYoIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
                         break;
