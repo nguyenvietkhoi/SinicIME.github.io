@@ -1659,8 +1659,8 @@ function TaiYoRoma(w) {
             ipa.onset = ipa.onset.replace('`', '');
         }
     }
-    if ((ipa.onset == 'kw`') || (ipa.onset == 'k`w')) {
-        ipa.onset = 'k`';
+    if ((ipa.onset == 'kw`') || (ipa.onset == 'k`w') || (ipa.onset == 'khw') || (ipa.onset == 'kh`w') || (ipa.onset == 'khw`')) {
+        ipa.onset = ipa.onset.replace('w','');
         ipa.rime = "𖰿" + ipa.rime;
     }
 
