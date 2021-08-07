@@ -3,7 +3,7 @@
 
 <script type="text/javascript" src="./Scripts/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="./Scripts/sql.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     
 var N = [];
@@ -115,7 +115,7 @@ function readTextFile(file)
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 var i = 0;
-                var allLines = rawFile.responseText.split(/\r\n/);
+                var allLines = rawFile.responseText.replace(/\r\n/g, "\n").split(/\n/);
                 allLines.forEach(function (line) {
                     if (line.startsWith("Title:")) {
                         lang = line.split(":")[1];
