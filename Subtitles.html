@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<script type="text/javascript" src="./Scripts/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="./Scripts/sql.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    
+var N = [];
+var O = [];
+var L = [];
+var I = [];
+var E = [];
+var lang;
+var timedict = new Map();
+
+function getYoutube() {
+    VID_REGEX = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    var vid = document.getElementById("oriPad").value.match(VID_REGEX)[1];
+    readTextFile("./Subs/" + vid + ".ass");
+    player.loadVideoById(vid);
+}
+
+function loadVid() {
+    document.getElementById("oriPad").value = "https://youtu.be/" + document.getElementById("selVid").value;
+    getYoutube();
+}
+
+    // Load the IFrame Player API code asynchronously.
+var tag = document.createElement("script");
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+// Instantiate the Player.
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player("player", {
+    height: "480",
+    width: "848",
+    videoId: "UrT_ysrrqMo",
+    events: {
+        'onStateChange': onPlayerStateChange
+    }
+  });
+
+  // This is the source "window" that will emit the events.
+  var iframeWindow = player.getIframe().contentWindow;
+
+  // So we can compare against new updates.
+  var lastTimeUpdate = 0;
+
+  // Listen to events triggered by postMessage,
+  // this is how different windows in a browser
+  // (such as a popup or iFrame) can communicate.
+  // See: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+  window.addEventListener("message", function(event) {
+    // Check that the event was sent from the YouTube IFrame.
+    if (event.source === iframeWindow) {
+      var data = JSON.parse(event.data);
+
+      // The "infoDelivery" event is used by YT to transmit any
+      // kind of information change in the player,
+      // such as the current time or a playback quality change.
+      if (
+        data.event === "infoDelivery" &&
+        data.info &&
+        data.info.currentTime
+      ) {
+        // currentTime is emitted very frequently (milliseconds),
+        // but we only care about whole second changes.
+        var time = Math.floor(data.info.currentTime * 4);
+
+        if (time !== lastTimeUpdate) {
+
+            // It's now up to you to format the time.
+          if (timedict.has(time)) {
+              document.getElementById("nomSub").innerHTML = N[timedict.get(time)] != null ? N[timedict.get(time)] : "";
+              document.getElementById("oriSub").innerHTML = O[timedict.get(time)] != null ? O[timedict.get(time)] : "";
+              document.getElementById("latSub").innerHTML = L[timedict.get(time)] != null ? L[timedict.get(time)] : "";
+              document.getElementById("ipaSub").innerHTML = I[timedict.get(time)] != null ? I[timedict.get(time)] : "";
+              document.getElementById("engSub").innerHTML = E[timedict.get(time)] != null ? E[timedict.get(time)] : "";
+          }
+        }
+      }
+    }
+  });
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.BUFFERING) {
+        document.getElementById("nomSub").innerHTML = "";
+        document.getElementById("oriSub").innerHTML = "";
+        document.getElementById("latSub").innerHTML = "";
+        document.getElementById("ipaSub").innerHTML = "";
+        document.getElementById("engSub").innerHTML = "";
+    }
+}
+
+function readTextFile(file)
+{
+     N = [];
+     O = [];
+     L = [];
+     I = [];
+     E = [];
+     lang;
+     timedict = new Map();
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var i = 0;
+                var allLines = rawFile.responseText.split(/\r\n/);
+                allLines.forEach(function (line) {
+                    if (line.startsWith("Title:")) {
+                        lang = line.split(":")[1];
+                    }
+                    if (line.startsWith("Dialogue: 0")) {
+                        var header = line.replace(/, /g, "\t").split(",");
+                        starttime = header[1].split(":");
+                        if (timedict.has(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4))) {
+                            var t = timedict.get(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4));
+                            switch (header[3]) {
+                                case 'N': N[t] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
+                                case 'O': O[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'L': L[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'I': I[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'E': E[t] = header[9].replace(/\t/g, ", "); break;
+                                default: break;
+                            }
+                        } else {
+                            timedict.set(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4), i);
+                            switch (header[3]) {
+                                case 'N': N[i] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
+                                case 'O': O[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'L': L[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'I': I[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'E': E[i] = header[9].replace(/\t/g, ", "); break;
+                                default: break;
+                            }
+                            i++;
+                        }
+                    }
+                });
+            }
+        }
+    }
+    rawFile.send(null);
+
+    $("#oriSub").css({ 'font-family': 'Cambria, "Tai Lanna", "Cambria Tai", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    switch (lang) {
+        case "taideng":
+            $("#oriSub").css({ 'font-family': $("#oriSub").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
+            break;
+        case "taidon":
+            $("#oriSub").css({ 'font-family': $("#oriSub").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
+            break;
+        default:
+            break;
+    }
+}
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subtitles — Linguaevum</title>
+    <link href="./Content/bootstrap.css" rel="stylesheet">
+    <link href="./Content/Site.css" rel="stylesheet">
+    <style>
+        body {
+              padding: 0;margin: 0;color: #fff;background: url(./Resources/trong.png);
+        }
+        #dict {
+            color:#eee;
+        }
+        #oriPad {
+            color: #000;max-width: 720px;width: 28em;
+        }
+        #nomSub, #yoSub {
+            width: 39px;
+            writing-mode: vertical-rl;
+            font-size: 32px;
+        }
+        #nomSub{
+            color: white;
+        }
+        #latSub {
+            color: white;
+            font-family: "Segoe UI";
+        }
+
+        .Home_title {
+            float:left;text-align: left; margin: 0px;color: #CDAC24;padding: 15px 10px 15px 30px;font-size: 18px;line-height: 20px;
+        }
+        .Home_button {
+            background:#232323;color:#CDAC24; margin: 5px;flex-basis: 45%;text-align: left;text-decoration: none;transition: color .15s ease,border-color .15s ease;padding: 15px 15px;font-size: 2rem;line-height: 12px;cursor: pointer;border: 1px solid #CDAC24;border-radius: 4px;
+        }
+        .Home_button:hover {
+            background-color: #551780;
+        }
+        .Home_button a {
+            color: inherit;text-decoration: none;
+        }
+        .Home_box {
+            color:#000;max-width:420px;margin: 5px;flex-basis: 45%;padding: 1rem;text-align: left;color: inherit;font-size: 1.6rem;text-decoration: none;border: 1px solid #eaeaea;border-radius: 4px;transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        .Home_container {
+            min-height: 100vh;padding: 5px 0;display: flex;flex-direction: column;justify-content: flex-start;align-items: center;
+        }
+        .Home_description {
+            text-align: center; line-height: 1.5; font-size: 2rem;
+        }
+        .Home_card {
+            margin: 5px;flex-basis: 45%;padding: 2rem;text-align: left;color: inherit;text-decoration: none;border: 1px solid #eaeaea;border-radius: 6px;transition: color 0.15s ease, border-color 0.15s ease;font-size:2rem;
+        }
+        .Home_card a {
+            text-decoration: none;color: #ff9900; font-weight: bold;cursor:text;
+        }
+        .Home_main {
+            padding: 0rem 0;flex: 1;display: flex;flex-direction: column;justify-content: center;align-items: center;
+        }
+
+        .textpad {
+            text-align: center;
+	        color: #DDC326;
+            font-size: 26px;
+	        font-family: Cambria, "Tai Lanna", "Cambria Tai", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement";
+        }
+@media (max-width: 500px) {
+  .Home_container {
+    padding: 25px 0;
+  }
+  .Home_button {
+      margin: 0;
+  }
+  #oriPad {
+      max-width: 180px;
+  }
+}
+
+.Home_button .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin: 4rem -3rem;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.Home_button:hover .tooltiptext {
+  visibility: visible;
+}
+    </style>
+</head>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed">
+    </div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#layoutbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://linguaevum.ddns.net/"><img src="./Resources/tho.png" class="logo"></a>
+            <a class="navbar-brand" href="/Home/IME">Sinic IME</a>
+            <div class="Home_title">
+                Subtitles
+            </div>
+        </div>
+        <div>
+            <select style="margin: 8px; padding: 5px; font-family: 'Segoe UI'" data-style="btn-primary" id="selVid" onchange="loadVid()">
+                <option value="UrT_ysrrqMo">Choose a video</option>
+                <option value="9Vpl67aNbQA">No̤ng Faa̱n Sli̤ng of Bắc Giang</option>
+                <option value="goIMag7srmo">Ta̤y Đëng of Pù Luông</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="Home_container">
+    <div style="padding:60px 5px 5px 0px" >
+        <input type="text" class="Home_box" id="oriPad" placeholder="Link..." name="ori">
+        <button class="Home_button" onclick=getYoutube()>▶️<span class="tooltiptext">Play</span></button>
+    </div>
+	<table class="textpad">
+	<tr>
+		<td>
+			<div id="player"></div>
+		</td>
+		<td rowspan=5>
+			<div id="yoSub"></div>
+		</td>
+        <td rowspan=5>
+            <div id="nomSub"></div>
+        </td>
+	</tr>
+	<tr>
+		<td>
+			<div id="oriSub"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="latSub"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="ipaSub"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="engSub"></div>
+		</td>
+	</tr>
+	</table>
+    <div styles="Home_main" id="maincontent">
+	</div>
+</div>
+<footer style="margin: 0 0 0 30px; font-size: 12px;">
+    <p>© 2021 — Linguaevum</p>
+</footer>
+<script src="./Scripts/jquery-3.5.1.js"></script>
+<script src="./Scripts/bootstrap.js"></script>
+<script src="./Scripts/respond.js"></script>
