@@ -207,7 +207,7 @@ function opttableselect(tablesel) {
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
             $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
@@ -219,7 +219,7 @@ function opttableselect(tablesel) {
         case 20: opttable = "rubykhuen";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
             document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>文 → ᨴ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Lanna", "Tai Khuen") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Lanna", "Tai Khuen") });
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Lanna", "Tai Khuen") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Lanna", "Tai Khuen") });
             $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Lanna", "Tai Khuen") });
@@ -260,7 +260,7 @@ function opttableselect(tablesel) {
         case 27: opttable = "rubytaideng";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
             document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
             $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
