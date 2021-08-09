@@ -15,6 +15,8 @@ var lang;
 var timedict = new Map();
 
 var vidID = new URLSearchParams(window.location.search).get("v");
+if (vidID!=null)
+	readTextFile("./Subs/" + vidID + ".ass");
 
 function getYoutube() {
     VID_REGEX = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
