@@ -14,6 +14,8 @@ var E = [];
 var lang;
 var timedict = new Map();
 
+var vidID = new URLSearchParams(window.location.search).get("v");
+
 function getYoutube() {
     VID_REGEX = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     var vid = document.getElementById("oriPad").value.match(VID_REGEX)[1];
@@ -38,7 +40,7 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
     height: "480",
     width: "848",
-    videoId: "UrT_ysrrqMo",
+    videoId: vidID ? vidID : "UrT_ysrrqMo",
     events: {
         'onStateChange': onPlayerStateChange
     }
