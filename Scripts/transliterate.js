@@ -1987,6 +1987,9 @@ function VietIPA(w, accent) {
         ipa.onset = "q";
         ipa.rime = "uâc";
     }
+    if (((ipa.onset == "kh") || (ipa.onset == "g") || (ipa.onset == "ng") || (ipa.onset == "h")) && (ipa.rime.startsWith("oa") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("oe") || ipa.rime.startsWith("uâ") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("uơ"))) {
+        ipa.onset += "w";
+    }
     if ((ipa.onset == "gi") && !['i', 'in', 'it', 'inh', 'ich', 'im', 'ip', 'iên', 'iêt', 'iêng', 'iêc', 'iêm', 'iêp', 'ya'].includes(ipa.rime)) {
         ipa.rime = ipa.rime.substring(1);
     }

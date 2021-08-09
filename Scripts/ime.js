@@ -268,7 +268,12 @@ function opttableselect(tablesel) {
         case 0:
         default: opttable = "rubynom";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>'+$("#HaNoi").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HaNoi\',20)"><a>IPA: ' + $("#HaNoi").val() + '</a></li>' + '<li onclick="logo2ipa(\'SaiGon\',20)"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' + '<li onclick="logo2ipa(\'QuangNam\',20)"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' +
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HaNoi\',20)"><a>IPA: ' + $("#HaNoi").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'NamDinh\',20)"><a>IPA: ' + $("#NamDinh").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'Vinh\',20)"><a>IPA: ' + $("#Vinh").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'QuangNam\',20)"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'BinhDinh\',20)"><a>IPA: ' + $("#BinhDinh").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'SaiGon\',20)"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>→ abc</a></li>' + convertdeftext);
             break;
     }
@@ -774,7 +779,7 @@ function logo2ipa(accent, maxlevel) {
                         ipaword = TayIPA(word[i], accent);
                         convtxt += (prespace + ipaword.onset + ipaword.rime + ipaword.tone);
                         break;
-                    case 'HaNoi': case 'SaiGon': case 'QuangNam':
+                    case 'HaNoi': case 'NamDinh': case 'Vinh': case 'QuangNam': case 'BinhDinh': case 'SaiGon':
                         ipaword = VietIPA(word[i], accent);
                         convtxt += (prespace + ipaword.onset + ipaword.rime + ipaword.tone);
                         break;
