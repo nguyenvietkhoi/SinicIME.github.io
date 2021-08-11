@@ -6,6 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     
+var Y = [];
 var N = [];
 var O = [];
 var L = [];
@@ -79,6 +80,7 @@ function onYouTubeIframeAPIReady() {
 
             // It's now up to you to format the time.
           if (timedict.has(time)) {
+              document.getElementById("yoSub").innerHTML = Y[timedict.get(time)] != null ? Y[timedict.get(time)] : "";
               document.getElementById("nomSub").innerHTML = N[timedict.get(time)] != null ? N[timedict.get(time)] : "";
               document.getElementById("oriSub").innerHTML = O[timedict.get(time)] != null ? O[timedict.get(time)] : "";
               document.getElementById("latSub").innerHTML = L[timedict.get(time)] != null ? L[timedict.get(time)] : "";
@@ -93,6 +95,7 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.BUFFERING) {
+        document.getElementById("yoSub").innerHTML = "";
         document.getElementById("nomSub").innerHTML = "";
         document.getElementById("oriSub").innerHTML = "";
         document.getElementById("latSub").innerHTML = "";
@@ -103,6 +106,7 @@ function onPlayerStateChange(event) {
 
 function readTextFile(file)
 {
+     Y = [];
      N = [];
      O = [];
      L = [];
@@ -130,6 +134,7 @@ function readTextFile(file)
                         if (timedict.has(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4))) {
                             var t = timedict.get(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4));
                             switch (header[3]) {
+								case 'Y': Y[t] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
                                 case 'N': N[t] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
                                 case 'O': O[t] = header[9].replace(/\t/g, ", "); break;
                                 case 'L': L[t] = header[9].replace(/\t/g, ", "); break;
@@ -140,6 +145,7 @@ function readTextFile(file)
                         } else {
                             timedict.set(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4), i);
                             switch (header[3]) {
+								case 'Y': Y[i] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
                                 case 'N': N[i] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
                                 case 'O': O[i] = header[9].replace(/\t/g, ", "); break;
                                 case 'L': L[i] = header[9].replace(/\t/g, ", "); break;
@@ -187,15 +193,15 @@ function readTextFile(file)
             color: #000;max-width: 720px;width: 28em;
         }
         #nomSub, #yoSub {
-            width: 39px;
+            width: 50px;
             writing-mode: vertical-rl;
-            font-size: 32px;
+            font-size: 28px;
         }
         #nomSub{
             color: white;
         }
 		#ipaSub {
-			color: #ff9900;
+			color: #61d3a9;
 		}
         #latSub {
             color: white;
@@ -292,6 +298,7 @@ function readTextFile(file)
                 <option value="UrT_ysrrqMo">Choose a video</option>
                 <option value="4DgrsfDNnlk">Xẩm ngược đời by Hà Thị Cầu</option>
                 <option value="9Vpl67aNbQA">No̤ng Faa̱n Sli̤ng of Bắc Giang</option>
+                <option value="tvv67koOTB8">Kô̄p kī bướn in Tă̄i Yǒ</option>
                 <option value="goIMag7srmo">Tày Đeng of Pù Luông</option>
             </select>
         </div>
