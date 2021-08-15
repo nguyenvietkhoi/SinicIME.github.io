@@ -207,13 +207,13 @@ function TaiDonIPA(w, accent) {
     w = w.replace('ꫛ', 'ꪶꪁꪙ');
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c)) {
+        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪇꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
                 ipa.rime += "◌";
-                if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪ".includes(c))
+                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪ".includes(c))
                     ipa.toneclass = 1;
-                else if ("ꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c))
+                else if ("ꪁꪇꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
                     ipa.toneclass = 2;
             }
             else if (((ipa.rime == "") || (ipa.rime.endsWith("◌"))) && (c != "ꪮ") && (!ipa.onset2.endsWith("1"))) {
@@ -223,7 +223,7 @@ function TaiDonIPA(w, accent) {
                 ipa.onset2 += c;
             }
             else {
-                if ("ꪀꪒꪚ".includes(c)) {
+                if ("ꪀꪒꪚꪰ‍ꪒ".includes(c)) {
                     tmpconso = c;
                     if (c == "ꪀ") {
                         if (ipa.tone == "") {
@@ -282,7 +282,7 @@ function TaiDonIPA(w, accent) {
                                 ipa.onset2 = ipa.onset2.slice(0, -1);
                                 coda = ipa.onset2.slice(-1);
                             }
-                            if ("ꪀꪒꪚ".includes(coda)) {
+                            if ("ꪀꪒꪚꪰ‍ꪒ".includes(coda)) {
                                 if (coda == "ꪀ") {
                                     if (ipa.tone == "") {
                                         ipa.tone = "ˀ";
@@ -333,6 +333,9 @@ function TaiDonIPA(w, accent) {
                 }
             }
         }
+        else if ((c == "‍") && ("ꪤꪗꪎꪏꪩꪝ".includes(ipa.onset))) {
+            ipa.onset += c;
+        }
         else if ("꪿꫁".includes(c)) {
             ipa.tone = c;
             ipa.rime += "̽";
@@ -346,7 +349,7 @@ function TaiDonIPA(w, accent) {
                         ipa.onset2 = ipa.onset2.slice(0, -1);
                         coda = ipa.onset2.slice(-1);
                     }
-                    if ("ꪀꪒꪚ".includes(coda)) {
+                    if ("ꪀꪒꪚꪰ‍ꪒ".includes(coda)) {
                         if (coda == "ꪀ") {
                             if (ipa.tone == "") {
                                 ipa.tone = "ˀ";
@@ -396,7 +399,7 @@ function TaiDonIPA(w, accent) {
         }
         else {
             if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌ꪻ◌ꪼ◌".includes(c))) {
-                if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(tmpconso)) {
+                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪇꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
                     previpa.rime = previpa.rime.slice(0, -1);
@@ -430,7 +433,7 @@ function TaiDonIPA(w, accent) {
             ipa.onset2 = ipa.onset2.slice(0, -1);
             coda = ipa.onset2.slice(-1);
         }
-        if ("ꪀꪒꪚ".includes(coda)) {
+        if ("ꪀꪒꪚꪰ‍ꪒ".includes(coda)) {
             if (coda == "ꪀ") {
                 if (ipa.tone == "") {
                     ipa.tone = "ˀ";
@@ -459,7 +462,7 @@ function TaiDonIPA(w, accent) {
             ipa.rime += coda;
             ipa.onset2 = ipa.onset2.slice(0, -1);
         }
-        else if (coda == "ꪮ") {
+        else if (coda == "ꪥꪫꪉꪙꪣ") {
             ipa.rime += coda;
             ipa.onset2 = ipa.onset2.slice(0, -1);
         }
@@ -549,6 +552,10 @@ function TaiDonIPA(w, accent) {
         if (accent == "roman") {
             ipatmp.onset = ipatmp.onset.replace('`', '');
             ipatmp.onset = ipatmp.onset.replace("kw", "qu");
+            if (ipatmp.onset == "∅") {
+                ipastr = (" ∅") + ipastr;
+                continue;
+            }
             if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
                 ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
