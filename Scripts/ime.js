@@ -68,7 +68,7 @@ xhr.onload = function (e) {
 xhr.send();
 
 function isNoSpaceLang(qn) {
-    return ((qn == 8) || (qn == 9) || (qn == 15) || (qn == 16) || (qn == 19) || (qn == 20) || (qn == 24) || (qn == 26));
+    return ((qn == 8) || (qn == 9) || (qn == 15) || (qn == 16) || (qn == 19) || (qn == 20) || (qn == 26));
 }
 
 function virtualtype(key) {

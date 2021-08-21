@@ -1173,6 +1173,10 @@ function TaiDonRoma(w) {
         ipa.onset = "k";
         ipa.glide = "ꪫ";
     }
+    else if ((ipa.onset == "kw`")) {
+        ipa.onset = "k`";
+        ipa.glide = "ꪫ";
+    }
     ipa.onset = ipa.onset.replace("gh", "g");
     if ((ipa.onset == "c") || (ipa.onset == "c`"))
         ipa.onset = ipa.onset.replace("c", "k");
@@ -1274,6 +1278,10 @@ function TaiDamRoma(w) {
     }
     if ((ipa.onset == "kw")) {
         ipa.onset = "k";
+        ipa.glide = "ꪫ";
+    }
+    else if ((ipa.onset == "kw`")) {
+        ipa.onset = "k`";
         ipa.glide = "ꪫ";
     }
     ipa.onset = ipa.onset.replace("gh", "g");
