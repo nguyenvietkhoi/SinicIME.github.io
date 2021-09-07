@@ -551,6 +551,7 @@ function TaiDonIPA(w, accent) {
 
         if (accent == "roman") {
             ipatmp.onset = ipatmp.onset.replace('`', '');
+            ipatmp.rime = ipatmp.rime.replace('`', '');
             ipatmp.onset = ipatmp.onset.replace("kw", "qu");
             if (ipatmp.onset == "∅") {
                 ipastr = (" ∅") + ipastr;
@@ -925,6 +926,7 @@ function TaiDamIPA(w, accent) {
 
         if (accent == "roman") {
             ipatmp.onset = ipatmp.onset.replace('`', '');
+            ipatmp.rime = ipatmp.rime.replace('`', '');
             ipatmp.onset = ipatmp.onset.replace("kw", "qu");
             if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
                 ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
@@ -1180,6 +1182,9 @@ function TaiDonRoma(w) {
     ipa.onset = ipa.onset.replace("gh", "g");
     if ((ipa.onset == "c") || (ipa.onset == "c`"))
         ipa.onset = ipa.onset.replace("c", "k");
+    if ((ipa.glide == "ꪫ") && ((ipa.rime == "e") || (ipa.rime == "ê"))) {
+        ipa.rime += "`";
+    }
 
     ipaSQL = ipadb.exec("SELECT phone FROM TaiDon where roman='" + ipa.rime + "' ");
     if (ipaSQL.length > 0)
@@ -1287,7 +1292,9 @@ function TaiDamRoma(w) {
     ipa.onset = ipa.onset.replace("gh", "g");
     if ((ipa.onset == "c") || (ipa.onset == "c`"))
         ipa.onset = ipa.onset.replace("c", "k");
-
+    if ((ipa.glide == "ꪫ") && (ipa.rime == "e")) {
+        ipa.rime = "e`";
+    }
     ipaSQL = ipadb.exec("SELECT phone FROM TaiDam where roman='" + ipa.rime + "' ");
     if (ipaSQL.length > 0)
         ipa.rime = ipaSQL[0].values[0] + "";
@@ -1783,7 +1790,7 @@ function TaiYorimetone(rime, tone) {
                 if (rimetone == rime) {
                     rimetone = rime.replace("o", "õ").replace("u", "ũ").replace("ư", "ữ");
                     if (rimetone == rime) {
-                        rimetone = rime.replace("i", "ĩ");
+                        rimetone = rime.replace("i", "ĩ").replace("y", "ỹ");
                     }
                 }
             }
@@ -1795,7 +1802,7 @@ function TaiYorimetone(rime, tone) {
                 if (rimetone == rime) {
                     rimetone = rime.replace("o", "ỏ").replace("u", "ủ").replace("ư", "ử");
                     if (rimetone == rime) {
-                        rimetone = rime.replace("i", "ỉ");
+                        rimetone = rime.replace("i", "ỉ").replace("y", "ỷ");
                     }
                 }
             }
@@ -1807,7 +1814,7 @@ function TaiYorimetone(rime, tone) {
                 if (rimetone == rime) {
                     rimetone = rime.replace("o", "ó").replace("u", "ú").replace("ư", "ứ");
                     if (rimetone == rime) {
-                        rimetone = rime.replace("i", "í");
+                        rimetone = rime.replace("i", "í").replace("y", "ý");
                     }
                 }
             }
@@ -1819,7 +1826,7 @@ function TaiYorimetone(rime, tone) {
                 if (rimetone == rime) {
                     rimetone = rime.replace("o", "ò").replace("u", "ù").replace("ư", "ừ");
                     if (rimetone == rime) {
-                        rimetone = rime.replace("i", "ì");
+                        rimetone = rime.replace("i", "ì").replace("y", "ỳ");
                     }
                 }
             }
@@ -1831,7 +1838,7 @@ function TaiYorimetone(rime, tone) {
                 if (rimetone == rime) {
                     rimetone = rime.replace("o", "ọ").replace("u", "ụ").replace("ư", "ự");
                     if (rimetone == rime) {
-                        rimetone = rime.replace("i", "ị");
+                        rimetone = rime.replace("i", "ị").replace("y", "ỵ");
                     }
                 }
             }
@@ -1843,7 +1850,7 @@ function TaiYorimetone(rime, tone) {
                 if (rimetone == rime) {
                     rimetone = rime.replace("o", "ō").replace("u", "ū").replace("ư", "ư̄");
                     if (rimetone == rime) {
-                        rimetone = rime.replace("i", "ī");
+                        rimetone = rime.replace("i", "ī").replace("y", "ȳ");
                     }
                 }
             }
@@ -1855,7 +1862,7 @@ function TaiYorimetone(rime, tone) {
                 if (rimetone == rime) {
                     rimetone = rime.replace("o", "ǒ").replace("u", "ǔ").replace("ư", "ư̌");
                     if (rimetone == rime) {
-                        rimetone = rime.replace("i", "ǐ");
+                        rimetone = rime.replace("i", "ǐ").replace("y", "y̌");
                     }
                 }
             }
