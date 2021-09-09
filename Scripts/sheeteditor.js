@@ -1,6 +1,6 @@
 ﻿function loadTaiDB() {
     $("#waitscreen").css({ display: 'block' });
-    $("#googleSheet").css({ 'font-family': 'Cambria, Tahoma, "Tai Lanna", "Cambria Tai", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#googleSheet").css({ 'font-family': 'Cambria, Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
         let i;
         var sheet = "";
         sheet += "<thead style='font-size: 12px; font-weight: normal; background: url(./Resources/wave.png) fixed;'><tr><th>" +
