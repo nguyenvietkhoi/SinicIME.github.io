@@ -956,24 +956,24 @@ function TaiPaoIPA(w, accent) {
 
     for (var i = 0; i < [...w].length; i++) {
         var c = [...w][i];
-        if ("𖱐𖱔𖱘𖱼𖱾𖱖𖱚𖱠𖱴𖱢𖱤𖱦𖱨𖱞𖱸𖱪𖱬𖱮𖱳𖱰𖱺𖱜𖱒𖱶𖱑𖱕𖱙𖱽𖱿𖱗𖱛𖱡𖱵𖱣𖱥𖱧𖱩𖱟𖱷𖱹𖱫𖱭𖱯𖱳𖱱𖱻𖱝𖱓".includes(c)) {
+        if ("𕉐𕉔𕉘𕉼𕉾𕉖𕉚𕉠𕉴𕉢𕉤𕉦𕉨𕉞𕉸𕉪𕉬𕉮𕉳𕉰𕉺𕉜𕉒𕉶𕉑𕉕𕉙𕉽𕉿𕉗𕉛𕉡𕉵𕉣𕉥𕉧𕉩𕉟𕉷𕉹𕉫𕉭𕉯𕉳𕉱𕉻𕉝𕉓".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
-                if ("𖱐𖱔𖱘𖱼𖱾𖱖𖱚𖱠𖱴𖱢𖱤𖱦𖱨𖱞𖱸𖱪𖱬𖱮𖱳𖱰𖱺𖱜𖱒𖱶".includes(c))
+                if ("𕉐𕉔𕉘𕉼𕉾𕉖𕉚𕉠𕉴𕉢𕉤𕉦𕉨𕉞𕉸𕉪𕉬𕉮𕉳𕉰𕉺𕉜𕉒𕉶".includes(c))
                     ipa.toneclass = 1;
-                else if ("𖱑𖱕𖱙𖱽𖱿𖱗𖱛𖱡𖱵𖱣𖱥𖱧𖱩𖱟𖱷𖱹𖱫𖱭𖱯𖱳𖱱𖱻𖱝𖱓".includes(c))
+                else if ("𕉑𕉕𕉙𕉽𕉿𕉗𕉛𕉡𕉵𕉣𕉥𕉧𕉩𕉟𕉷𕉹𕉫𕉭𕉯𕉳𕉱𕉻𕉝𕉓".includes(c))
                     ipa.toneclass = 2;
             }
-            else if ((ipa.rime == "") && (ipa.tone == "") && (ipa.onset != "") && (c == "𖱻") && (!ipa.onset2.endsWith("1"))) {
-                c = "𖱻1";
+            else if ((ipa.rime == "") && (ipa.tone == "") && (ipa.onset != "") && (c == "𕉻") && (!ipa.onset2.endsWith("1"))) {
+                c = "𕉻1";
                 ipa.onset2 += c;
             }
-            else if ((ipa.rime != "") && ("𖱐𖱢𖱪".includes(c))) {
+            else if ((ipa.rime != "") && ("𕉐𕉢𕉪".includes(c))) {
                 tmpconso = c;
-                if ("𖲀𖲉𖲈𖲄𖲂𖲃𖲇".includes(ipa.rime) && ipa.tone != "𖲑")
+                if ("𕊀𕊉𕊈𕊄𕊂𕊃𕊇".includes(ipa.rime) && ipa.tone != "𕊑")
                     ipa.tone = "5";
                 else {
-                    if ("𖲀𖲉𖲄𖲂𖲃𖲇".includes(ipa.rime))
+                    if ("𕊀𕊉𕊄𕊂𕊃𕊇".includes(ipa.rime))
                         ipa.rime = ipa.rime + ipa.tone;
                     else
                         ipa.rime = ipa.tone + ipa.rime;
@@ -989,7 +989,7 @@ function TaiPaoIPA(w, accent) {
                 ipa.toneclass = 0;
                 continue;
             }
-            else if ((ipa.rime != "") && ("𖱵𖱻𖱙𖱩𖱳".includes(c))) {
+            else if ((ipa.rime != "") && ("𕉵𕉻𕉙𕉩𕉳".includes(c))) {
                 tmpconso = c;
                 if (ipa.tone == "") {
                     ipa.tone = "0";
@@ -1026,12 +1026,12 @@ function TaiPaoIPA(w, accent) {
                 continue;
             }
         }
-        else if ("𖲑𖲒".includes(c)) {
+        else if ("𕊑𕊒".includes(c)) {
             ipa.tone = c;
         }
         else {
             if (ipa.onset == "") {
-                if ("𖱐𖱔𖱘𖱼𖱾𖱖𖱚𖱠𖱴𖱢𖱤𖱦𖱨𖱞𖱸𖱪𖱬𖱮𖱳𖱰𖱺𖱜𖱒𖱶𖱑𖱕𖱙𖱽𖱿𖱗𖱛𖱡𖱵𖱣𖱥𖱧𖱩𖱧𖱷𖱹𖱫𖱭𖱯𖱳𖱱𖱻𖱝𖱓".includes(tmpconso)) {
+                if ("𕉐𕉔𕉘𕉼𕉾𕉖𕉚𕉠𕉴𕉢𕉤𕉦𕉨𕉞𕉸𕉪𕉬𕉮𕉳𕉰𕉺𕉜𕉒𕉶𕉑𕉕𕉙𕉽𕉿𕉗𕉛𕉡𕉵𕉣𕉥𕉧𕉩𕉧𕉷𕉹𕉫𕉭𕉯𕉳𕉱𕉻𕉝𕉓".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
                     previpa.rime = [...previpa.rime].slice(0, -1);
