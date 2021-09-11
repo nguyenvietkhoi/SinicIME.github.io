@@ -253,8 +253,8 @@ function opttableselect(tablesel) {
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
             document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\',20)"><a>IPA: ' + $("#QuyChau").val() + '</a></li>' + '<li onclick="logo2ipa(\'ChauLi\',20)"><a>IPA: ' + $("#ChauLi").val() +
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
-                '<li onclick="roma2phone()"><a>abc → 𖰑</a></li>' +
-                '<li onclick="convertpad(0,20)"><a>文 → 𖰑</a></li>' + convertdeftext);
+                '<li onclick="roma2phone()"><a>abc → 𕈑</a></li>' +
+                '<li onclick="convertpad(0,20)"><a>文 → 𕈑</a></li>' + convertdeftext);
             break;
         case 25: opttable = "rubytaipao";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
